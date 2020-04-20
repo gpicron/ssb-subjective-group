@@ -27,7 +27,7 @@
     "test": "nyc ava",
     "watch:test": "nodemon -e 'ts json' -x 'npm test || true'",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "typedoc": "typedoc"
+    "typedoc": "typedoc  --options tdconfig.json"
   },
   "lint-staged": {
     "*.ts": [
@@ -100,6 +100,7 @@
   "private": true,
   "dependencies": {
     "flumeview-query": "^7.2.1",
+    "fp-ts": "^2.5.3",
     "io-ts": "^2.2.0",
     "io-ts-promise": "latest",
     "is-canonical-base64": "^1.1.1",

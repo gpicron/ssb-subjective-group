@@ -1,0 +1,17 @@
+{
+    "mode": "modules",
+    "out": "./doc",
+    "exclude": [
+        "./node_modules/**/*",
+        "./dist/**/*",
+        "./test/**/*",
+        "./src/index.ts"
+    ],
+    "excludePrivate": true,
+    "excludeNotExported": true,
+    "module": "commonjs",
+    "target": "ES6",
+    "readme": "none",
+    "name": "ssb-social-index",
+    "ignoreCompilerErrors": true
+}

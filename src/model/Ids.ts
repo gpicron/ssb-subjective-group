@@ -62,7 +62,7 @@ export type FeedId = t.OutputOf<typeof FeedIdCodec> & ssbTs.FeedId
 // ------------------------------------------------------------------------
 
 /** @internal */
-interface BlobIdBrand {
+export interface BlobIdBrand {
     readonly BlobId: unique symbol
 }
 

@@ -4,8 +4,8 @@ import * as t from 'io-ts'
 
 // ------------------------------------------------------------------------
 
-/** @internal */
-interface PositiveIntegerBrand {
+/** @hidden */
+export interface PositiveIntegerBrand {
     readonly PositiveInteger: unique symbol
 }
 
@@ -60,7 +60,7 @@ const mediaType = type + '/' + '(' + token + ')((?:' + ows + parameter + ')*)'
 export const mimeTypeRegExp = new RegExp(mediaType)
 
 /** @internal */
-interface MimeTypeBrand {
+export interface MimeTypeBrand {
     readonly MimeType: unique symbol
 }
 

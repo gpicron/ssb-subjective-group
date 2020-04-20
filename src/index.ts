@@ -11,9 +11,10 @@ import ssbKeys = require('ssb-keys')
 
 import { Source } from 'pull-stream'
 import { Msg } from 'ssb-typescript/readme'
+import { SubjectiveGroupAboutMessage } from './model/About'
 
 interface SSBApi {
-    publish: (msq: Msg) => void
+    publish: (msq: SubjectiveGroupAboutMessage) => void
 }
 
 /**
