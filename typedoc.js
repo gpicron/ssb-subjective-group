@@ -1,6 +1,6 @@
 module.exports = {
     src: [
-        './src/ssb-subjective-group.ts',
+        './src/index.ts',
     ],
     exclude: [
         './node_modules/**/*',

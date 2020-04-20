@@ -22,7 +22,7 @@ npm install git+ssh://git@github.com/gpicron/ssb-subjective-group
 ## Use
 
 ``` typescript
-import { ssbSubjectiveGroup } from '@gpicron/ssb-subjective-group'
+import { index } from '@gpicron/ssb-subjective-group'
 // TODO: describe usage
 ```
 

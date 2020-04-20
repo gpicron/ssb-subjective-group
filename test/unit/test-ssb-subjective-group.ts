@@ -4,9 +4,8 @@ import test from 'ava'
  * Unit under test
  */
 
-import { ssbSubjectiveGroup } from '../../src/ssb-subjective-group'
+// import { index } from 'index.ts'
 
-
-test.skip('TODO: unit-test ssb-subjective-group', t => {
+test('TODO: unit-test ssb-subjective-group', t => {
     t.fail()
 })

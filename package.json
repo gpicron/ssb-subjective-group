@@ -2,8 +2,8 @@
   "name": "@gpicron/ssb-subjective-group",
   "version": "0.0.1",
   "description": "Scuttlebutt plugin that implement the concepts of subjective identity and groups",
-  "main": "dist/src/ssb-subjective-group.js",
-  "types": "dist/src/ssb-subjective-group.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/ssb-subjective-group-types.d.ts",
   "scripts": {
     "prepublishOnly": "npm run clean && npm run compile",
     "compile": "tsc",
@@ -48,6 +48,7 @@
   "homepage": "https://github.com/gpicron/ssb-subjective-group",
   "devDependencies": {
     "@types/node": "^13.7.4",
+    "@types/pull-stream": "^3.6.0",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
     "ava": "^3.4.0",
@@ -60,10 +61,10 @@
     "lint-staged": "^10.0.7",
     "nyc": "^15.0.0",
     "pre-commit": "^1.2.2",
-    "prettier": "1.19.1",
+    "prettier": "^1.19.1",
     "rimraf": "^3.0.2",
     "ts-node": "^8.6.2",
-    "typedoc": "^0.16.10",
+    "typedoc": "^0.16.11",
     "typedoc-plugin-markdown": "^2.2.16",
     "typescript": "^3.8.2"
   },
@@ -96,5 +97,16 @@
   "keywords": [
     "scuttlebutt"
   ],
-  "private": true
+  "private": true,
+  "dependencies": {
+    "flumeview-query": "^7.2.1",
+    "io-ts": "^2.2.0",
+    "io-ts-promise": "latest",
+    "is-canonical-base64": "^1.1.1",
+    "npm-dts": "^1.2.1",
+    "pull-stream": "^3.6.14",
+    "secret-stack-decorators": "^1.0.0",
+    "ssb-keys": "^7.2.2",
+    "ssb-typescript": "^2.0.0"
+  }
 }
