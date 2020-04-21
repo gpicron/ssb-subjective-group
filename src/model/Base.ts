@@ -26,22 +26,6 @@ export type PositiveInteger = t.OutputOf<typeof PositiveIntegerCodec>
 
 // ------------------------------------------------------------------------
 
-/** @hidden */
-interface BufferBrand {
-    readonly Buffer: unique symbol
-}
-
-/**
- * IO-TS Codec for Buffer objects.
- */
-export const BufferCodec = t.brand(
-    t.unknown,
-    (n: unknown): n is t.Branded<unknown, BufferBrand> => Buffer.isBuffer(n),
-    'Buffer'
-)
-
-// ------------------------------------------------------------------------
-
 import * as vmt from 'valid-mimetype'
 
 /** @hidden */

@@ -1,8 +1,12 @@
 import { SubjectiveIdentity } from './model/SubjectiveIdentity'
-import * as ids from './model/Ids'
+import {
+    IdentityKeysProvider,
+    KeyPair,
+    StrongPassword
+} from './model/IdentityKeysGenerator'
 import { FeedId } from './model/Ids'
-import { IdentityKeysGenerator } from './model/IdentityKeysGenerator'
-import * as about from './model/About'
+import { SubjectiveIdentityId } from './model/Ids'
+import { Name, ImageLink } from './model/About'
 import { Source } from 'pull-stream'
 import { Msg } from 'ssb-typescript/readme'
 
@@ -28,9 +32,7 @@ export interface SubjectiveGroupPlugin {
      *
      * @param id either a feed id (@...) or a subjective identity id (I...)
      */
-    about(
-        id: ids.FeedId | ids.SubjectiveIdentityId
-    ): Promise<SubjectiveIdentity>
+    about(id: FeedId | SubjectiveIdentityId): Promise<SubjectiveIdentity>
 
     /**
      * This procedure is the same as friends.isFollowing but with feed id or subjective identity as input and it
@@ -39,7 +41,7 @@ export interface SubjectiveGroupPlugin {
      * @param id either a feed id (@...) or a subjective identity id (I...)
      */
     isFollowing(
-        id: ids.FeedId | ids.SubjectiveIdentityId
+        id: FeedId | SubjectiveIdentityId
     ): Promise<Record<FeedId, boolean>>
 
     /**
@@ -49,13 +51,13 @@ export interface SubjectiveGroupPlugin {
      * @param id either a feed id (@...) or a subjective identity id (I...)
      */
     isBlocking(
-        id: ids.FeedId | ids.SubjectiveIdentityId
+        id: FeedId | SubjectiveIdentityId
     ): Promise<Record<FeedId, boolean>>
 
     /**
      * Publish an 'about' message with the Subjective Identity signature and public key as commitment of ownership.
      *
-     * @param identity_key_generator
+     * @param identityKeyGenerator
      * @param _feedId
      * @param name
      * @param image
@@ -63,10 +65,10 @@ export interface SubjectiveGroupPlugin {
      */
 
     publishSubjectiveIdentity(
-        identityKeyGenerator: IdentityKeysGenerator,
+        identityKey: KeyPair | StrongPassword | IdentityKeysProvider,
         _feedId: FeedId,
-        name?: about.Name,
-        image?: about.ImageLink,
+        name?: Name,
+        image?: ImageLink,
         description?: string
     ): Promise<void>
 
@@ -76,5 +78,5 @@ export interface SubjectiveGroupPlugin {
      *
      * @param id
      */
-    createUserStream(id: ids.FeedId | ids.SubjectiveIdentityId): Source<Msg>
+    createUserStream(id: FeedId | SubjectiveIdentityId): Source<Msg>
 }

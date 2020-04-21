@@ -32,7 +32,7 @@ type AboutMessageIdentitySignature = string
 /**
  * Rule for names in about message schema as suggested in Scuttlebot documentation.
  */
-export const aboutNameRegExp = /^[A-z0-9\._-]*[A-z0-9_-]$/
+export const aboutNameRegExp = /^[A-z0-9._-]*[A-z0-9_-]$/
 
 /** @hidden */
 interface NameBrand {

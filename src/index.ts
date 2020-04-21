@@ -3,14 +3,20 @@ import * as t from 'io-ts'
 import * as tp from 'io-ts-promise'
 
 import { SubjectiveIdentity } from './model/SubjectiveIdentity'
-import * as ids from './model/Ids'
-import { FeedId } from './model/Ids'
-import * as about from './model/About'
-import { SubjectiveGroupAboutMessage } from './model/About'
+import { FeedId, FeedIdCodec } from './model/Ids'
+import { SubjectiveIdentityId, SubjectiveIdentityIdCodec } from './model/Ids'
 import {
-    IdentityKeysGenerator,
+    AboutMessage,
+    Name,
+    ImageLink,
+    SubjectiveGroupAboutMessage
+} from './model/About'
+import {
+    IdentityKeysProvider,
     KeyPair,
-    KeyPairCodec
+    KeyPairCodec,
+    PasswordBasedIdentityKeysProvider,
+    StrongPassword
 } from './model/IdentityKeysGenerator'
 
 import { Source } from 'pull-stream'
@@ -62,8 +68,8 @@ class subjectiveGroup implements SubjectiveGroupPlugin {
     }
 
     private static FeedIdOrSubjIdentIdArgsCodec = t.union([
-        ids.FeedIdCodec,
-        ids.SubjectiveIdentityIdCodec
+        FeedIdCodec,
+        SubjectiveIdentityIdCodec
     ])
 
     /**
@@ -71,7 +77,7 @@ class subjectiveGroup implements SubjectiveGroupPlugin {
      */
     @muxrpc('async')
     async about(
-        _id: ids.FeedId | ids.SubjectiveIdentityId
+        _id: FeedId | SubjectiveIdentityId
     ): Promise<SubjectiveIdentity> {
         const id = await tp.decode(
             subjectiveGroup.FeedIdOrSubjIdentIdArgsCodec,
@@ -105,7 +111,7 @@ class subjectiveGroup implements SubjectiveGroupPlugin {
      */
     @muxrpc('async')
     async isFollowing(
-        _id: ids.FeedId | ids.SubjectiveIdentityId
+        _id: FeedId | SubjectiveIdentityId
     ): Promise<Record<FeedId, boolean>> {
         const id = await tp.decode(
             subjectiveGroup.FeedIdOrSubjIdentIdArgsCodec,
@@ -120,7 +126,7 @@ class subjectiveGroup implements SubjectiveGroupPlugin {
      */
     @muxrpc('async')
     async isBlocking(
-        _id: ids.FeedId | ids.SubjectiveIdentityId
+        _id: FeedId | SubjectiveIdentityId
     ): Promise<Record<FeedId, boolean>> {
         const id = await tp.decode(
             subjectiveGroup.FeedIdOrSubjIdentIdArgsCodec,
@@ -135,18 +141,29 @@ class subjectiveGroup implements SubjectiveGroupPlugin {
      */
     @muxrpc('async')
     async publishSubjectiveIdentity(
-        identityKeyGenerator: IdentityKeysGenerator,
+        identityKey: KeyPair | StrongPassword | IdentityKeysProvider,
         _feedId: FeedId,
-        name?: about.Name,
-        image?: about.ImageLink,
+        name?: Name,
+        image?: ImageLink,
         description?: string
     ): Promise<void> {
-        const feedId: FeedId = await tp.decode(ids.FeedIdCodec, _feedId)
-        const keyPair: KeyPair = await Promise.resolve(
-            identityKeyGenerator
-        ).then(tp.decode(KeyPairCodec))
+        const feedId: FeedId = await tp.decode(FeedIdCodec, _feedId)
 
-        const baseAboutMsg: about.AboutMessage = {
+        let keyPair: KeyPair
+
+        if (typeof identityKey === 'string') {
+            keyPair = await PasswordBasedIdentityKeysProvider(identityKey)()
+        } else if (typeof identityKey === 'function') {
+            keyPair = await identityKey().then(tp.decode(KeyPairCodec))
+        } else if (KeyPairCodec.is(identityKey)) {
+            keyPair = identityKey
+        } else {
+            keyPair = await Promise.reject<KeyPair>(
+                "Invalid 'identityKey' argument type"
+            )
+        }
+
+        const baseAboutMsg: AboutMessage = {
             about: feedId,
             name: name,
             image: image,
@@ -155,7 +172,7 @@ class subjectiveGroup implements SubjectiveGroupPlugin {
 
         const signature = ssbKeys.signObj(keyPair.private, baseAboutMsg)
 
-        const aboutMsg: about.SubjectiveGroupAboutMessage = {
+        const aboutMsg: SubjectiveGroupAboutMessage = {
             ...baseAboutMsg,
             subjectiveId: keyPair.pub,
             subjectiveIdSignature: signature
@@ -168,7 +185,7 @@ class subjectiveGroup implements SubjectiveGroupPlugin {
      * @inheritdoc
      */
     @muxrpc('source')
-    createUserStream(id: ids.FeedId | ids.SubjectiveIdentityId): Source<Msg> {
+    createUserStream(id: FeedId | SubjectiveIdentityId): Source<Msg> {
         throw new Error(`Not yet implemented ${id}`)
     }
 }

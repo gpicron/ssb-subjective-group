@@ -1,4 +1,5 @@
 import * as t from 'io-ts'
+import * as tp from 'io-ts-promise'
 import ssbKeys = require('ssb-keys')
 import isCanonicalBase64 = require('is-canonical-base64')
 
@@ -29,12 +30,57 @@ export const KeyPairCodec = t.strict({
 
 export type KeyPair = t.TypeOf<typeof KeyPairCodec>
 
-export type IdentityKeysGenerator = () => KeyPair
+/**
+ * Function signature of functions that provides the Subjective Identity KeyPair on demand.
+ */
+export type IdentityKeysProvider = () => Promise<KeyPair>
 
 // ---------------------------------------------------------------------
 
-export function PasswordBasedIdentityKeysGenerator(password: string) {
-    return () => {
-        return ssbKeys.generate('ed25519', password) as KeyPair
+import * as passwordTester from 'owasp-password-strength-test'
+
+/** @hidden */
+interface StrongPasswordBrand {
+    readonly StrongPassword: unique symbol
+}
+
+export const StrongPasswordCodec = t.brand(
+    t.string,
+    (s: string): s is t.Branded<string, StrongPasswordBrand> =>
+        passwordTester.test(s).strong,
+    'StrongPassword'
+)
+
+export type StrongPassword = t.TypeOf<typeof StrongPasswordCodec>
+
+// ---------------------------------------------------------------------
+
+/**
+ * This implementation of IdentityKeysGenerator take a password as seed for the key pair generation
+ *
+ * @param password
+ * @constructor
+ */
+export function PasswordBasedIdentityKeysProvider(
+    password: StrongPassword
+): IdentityKeysProvider {
+    return async () => {
+        return tp
+            .decode(StrongPasswordCodec, password)
+            .then(p => ssbKeys.generate('ed25519', p) as KeyPair)
+    }
+}
+
+/**
+ * This implementation of IdentityKeysGenerator return the provided key pair (for instance stored locally)
+ *
+ * @param password
+ * @constructor
+ */
+export function StoredIdentityKeysProvider(
+    keys: KeyPair
+): IdentityKeysProvider {
+    return async () => {
+        return tp.decode(KeyPairCodec, keys)
     }
 }
