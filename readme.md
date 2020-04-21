@@ -6,7 +6,7 @@
 [![Dependencies][]](https://david-dm.org/gpicron/ssb-subjective-group)
 [![Known Vulnerabilities](https://snyk.io/test/github/gpicron/ssb-subjective-group/badge.svg?targetFile=package.json)](https://snyk.io/test/github/gpicron/ssb-subjective-group?targetFile=package.json)
 
-_Sonar cloud  checks_ :
+_Sonar_ :
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=gpicron_ssb-subjective-group&metric=alert_status)](https://sonarcloud.io/dashboard?id=gpicron_ssb-subjective-group)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=gpicron_ssb-subjective-group&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=gpicron_ssb-subjective-group)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=gpicron_ssb-subjective-group&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=gpicron_ssb-subjective-group)
