@@ -21,12 +21,13 @@
 * [BlobId](README.md#blobid)
 * [FeedId](README.md#feedid)
 * [FeedWithMetainfo](README.md#feedwithmetainfo)
-* [IdentityKeysGenerator](README.md#identitykeysgenerator)
+* [IdentityKeysProvider](README.md#identitykeysprovider)
 * [ImageLink](README.md#imagelink)
 * [KeyPair](README.md#keypair)
 * [MimeType](README.md#mimetype)
 * [Name](README.md#name)
 * [PositiveInteger](README.md#positiveinteger)
+* [StrongPassword](README.md#strongpassword)
 * [SubjectiveGroupAboutMessage](README.md#subjectivegroupaboutmessage)
 * [SubjectiveIdentityId](README.md#subjectiveidentityid)
 * [Version](README.md#version)
@@ -34,7 +35,6 @@
 ### Variables
 
 * [BlobIdCodec](README.md#const-blobidcodec)
-* [BufferCodec](README.md#const-buffercodec)
 * [Ed25519KeyInB64Codec](README.md#const-ed25519keyinb64codec)
 * [FeedIdCodec](README.md#const-feedidcodec)
 * [FullImageLinkCodec](README.md#const-fullimagelinkcodec)
@@ -43,6 +43,7 @@
 * [MimeTypeCodec](README.md#const-mimetypecodec)
 * [NameCodec](README.md#const-namecodec)
 * [PositiveIntegerCodec](README.md#const-positiveintegercodec)
+* [StrongPasswordCodec](README.md#const-strongpasswordcodec)
 * [SubjectiveIdentityIdCodec](README.md#const-subjectiveidentityidcodec)
 * [VersionCodec](README.md#const-versioncodec)
 * [aboutNameRegExp](README.md#const-aboutnameregexp)
@@ -55,7 +56,8 @@
 
 ### Functions
 
-* [PasswordBasedIdentityKeysGenerator](README.md#passwordbasedidentitykeysgenerator)
+* [PasswordBasedIdentityKeysProvider](README.md#passwordbasedidentitykeysprovider)
+* [StoredIdentityKeysProvider](README.md#storedidentitykeysprovider)
 * [getPackageVersion](README.md#getpackageversion)
 
 ## Type aliases
@@ -64,7 +66,7 @@
 
 Ƭ **AboutMessage**: *object*
 
-*Defined in [src/model/About.ts:10](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/About.ts#L10)*
+*Defined in [src/model/About.ts:10](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L10)*
 
 #### Type declaration:
 
@@ -82,7 +84,7 @@ ___
 
 Ƭ **AboutMessageIdentitySignature**: *string*
 
-*Defined in [src/model/About.ts:26](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/About.ts#L26)*
+*Defined in [src/model/About.ts:26](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L26)*
 
 ___
 
@@ -90,7 +92,7 @@ ___
 
 Ƭ **BlobId**: *t.OutputOf‹typeof BlobIdCodec› & ssbTs.BlobId*
 
-*Defined in [src/model/Ids.ts:81](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/Ids.ts#L81)*
+*Defined in [src/model/Ids.ts:81](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L81)*
 
 Identifier of a blob ref.  This is a public key prefixed by the letter '&'.
 
@@ -100,7 +102,7 @@ ___
 
 Ƭ **FeedId**: *t.OutputOf‹typeof FeedIdCodec› & ssbTs.FeedId*
 
-*Defined in [src/model/Ids.ts:60](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/Ids.ts#L60)*
+*Defined in [src/model/Ids.ts:60](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L60)*
 
 Identifier of a feed.  This is a public key prefixed by the letter '@'.
 
@@ -110,7 +112,7 @@ ___
 
 Ƭ **FeedWithMetainfo**: *object*
 
-*Defined in [src/model/SubjectiveIdentity.ts:6](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/SubjectiveIdentity.ts#L6)*
+*Defined in [src/model/SubjectiveIdentity.ts:6](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/SubjectiveIdentity.ts#L6)*
 
 #### Type declaration:
 
@@ -120,15 +122,17 @@ ___
 
 ___
 
-###  IdentityKeysGenerator
+###  IdentityKeysProvider
 
-Ƭ **IdentityKeysGenerator**: *function*
+Ƭ **IdentityKeysProvider**: *function*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:32](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/IdentityKeysGenerator.ts#L32)*
+*Defined in [src/model/IdentityKeysGenerator.ts:36](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L36)*
+
+Function signature of functions that provides the Subjective Identity KeyPair on demand.
 
 #### Type declaration:
 
-▸ (): *[KeyPair](README.md#keypair)*
+▸ (): *Promise‹[KeyPair](README.md#keypair)›*
 
 ___
 
@@ -136,7 +140,7 @@ ___
 
 Ƭ **ImageLink**: *t.OutputOf‹typeof ImageLinkCodec›*
 
-*Defined in [src/model/About.ts:81](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/About.ts#L81)*
+*Defined in [src/model/About.ts:81](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L81)*
 
 "image" reference attributes (see 'about' messages)
 
@@ -146,7 +150,7 @@ ___
 
 Ƭ **KeyPair**: *t.TypeOf‹typeof KeyPairCodec›*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:30](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/IdentityKeysGenerator.ts#L30)*
+*Defined in [src/model/IdentityKeysGenerator.ts:31](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L31)*
 
 ___
 
@@ -154,7 +158,7 @@ ___
 
 Ƭ **MimeType**: *t.OutputOf‹typeof MimeTypeCodec›*
 
-Defined in src/model/base.ts:65
+Defined in src/model/base.ts:49
 
 MimeType string as defined by RFC 2045 Section 5.1 and RFC 7231 Section 3.1.1.1.
 
@@ -164,7 +168,7 @@ ___
 
 Ƭ **Name**: *t.OutputOf‹typeof NameCodec›*
 
-*Defined in [src/model/About.ts:54](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/About.ts#L54)*
+*Defined in [src/model/About.ts:54](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L54)*
 
 Identifier of a feed.  This is a public key prefixed by the letter 'I'.
 
@@ -180,11 +184,19 @@ PositiveInteger ( > 0 and < safe integer number in javascript).
 
 ___
 
+###  StrongPassword
+
+Ƭ **StrongPassword**: *t.TypeOf‹typeof StrongPasswordCodec›*
+
+*Defined in [src/model/IdentityKeysGenerator.ts:54](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L54)*
+
+___
+
 ###  SubjectiveGroupAboutMessage
 
 Ƭ **SubjectiveGroupAboutMessage**: *[AboutMessage](README.md#aboutmessage) & object*
 
-*Defined in [src/model/About.ts:20](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/About.ts#L20)*
+*Defined in [src/model/About.ts:20](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L20)*
 
 The base about message is signed with the subjectiveId key pair
 
@@ -194,7 +206,7 @@ ___
 
 Ƭ **SubjectiveIdentityId**: *t.OutputOf‹typeof SubjectiveIdentityIdCodec›*
 
-*Defined in [src/model/Ids.ts:37](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/Ids.ts#L37)*
+*Defined in [src/model/Ids.ts:37](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L37)*
 
 Identifier of a subjective identity.  This is a public key prefixed by the letter 'I'.
 
@@ -204,7 +216,7 @@ ___
 
 Ƭ **Version**: *t.OutputOf‹typeof VersionCodec›*
 
-Defined in src/model/base.ts:82
+Defined in src/model/base.ts:66
 
 ## Variables
 
@@ -216,23 +228,9 @@ Defined in src/model/base.ts:82
     'BlobId'
 )
 
-*Defined in [src/model/Ids.ts:72](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/Ids.ts#L72)*
+*Defined in [src/model/Ids.ts:72](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L72)*
 
 IO-TS Codec for BlobId
-
-___
-
-### `Const` BufferCodec
-
-• **BufferCodec**: *BrandC‹UnknownC‹›, BufferBrand›* = t.brand(
-    t.unknown,
-    (n: unknown): n is t.Branded<unknown, BufferBrand> => Buffer.isBuffer(n),
-    'Buffer'
-)
-
-Defined in src/model/base.ts:37
-
-IO-TS Codec for Buffer objects.
 
 ___
 
@@ -245,7 +243,7 @@ ___
     'Ed25519KeyInB64'
 )
 
-*Defined in [src/model/IdentityKeysGenerator.ts:15](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/IdentityKeysGenerator.ts#L15)*
+*Defined in [src/model/IdentityKeysGenerator.ts:16](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L16)*
 
 ___
 
@@ -257,7 +255,7 @@ ___
     'FeedId'
 )
 
-*Defined in [src/model/Ids.ts:51](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/Ids.ts#L51)*
+*Defined in [src/model/Ids.ts:51](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L51)*
 
 IO-TS Codec for FeedId
 
@@ -277,7 +275,7 @@ ___
     })
 ])
 
-*Defined in [src/model/About.ts:61](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/About.ts#L61)*
+*Defined in [src/model/About.ts:61](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L61)*
 
 IO-TS Codec "image" reference with attributes (see 'about' messages)
 
@@ -287,7 +285,7 @@ ___
 
 • **ImageLinkCodec**: *UnionC‹[IntersectionC‹[TypeC‹object›, PartialC‹object›]›, BrandC‹StringC‹›, BlobIdBrand›]›* = t.union([FullImageLinkCodec, BlobIdCodec])
 
-*Defined in [src/model/About.ts:76](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/About.ts#L76)*
+*Defined in [src/model/About.ts:76](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L76)*
 
 IO-TS Codec "image" reference with attributes or just the blobId (see 'about' messages)
 
@@ -301,7 +299,7 @@ ___
     private: Ed25519KeyInB64Codec
 })
 
-*Defined in [src/model/IdentityKeysGenerator.ts:24](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/IdentityKeysGenerator.ts#L24)*
+*Defined in [src/model/IdentityKeysGenerator.ts:25](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L25)*
 
 ___
 
@@ -314,7 +312,7 @@ ___
     'MimeType'
 )
 
-Defined in src/model/base.ts:55
+Defined in src/model/base.ts:39
 
 IO-TS Codec for MimeType as defined by RFC 2045 Section 5.1 and RFC 7231 Section 3.1.1.1
 
@@ -328,7 +326,7 @@ ___
     'AboutName'
 )
 
-*Defined in [src/model/About.ts:45](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/About.ts#L45)*
+*Defined in [src/model/About.ts:45](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L45)*
 
 IO-TS Codec for FeedId
 
@@ -349,6 +347,19 @@ IO-TS Codec for PositiveInteger ( > 0 and < safe integer number in javascript).
 
 ___
 
+### `Const` StrongPasswordCodec
+
+• **StrongPasswordCodec**: *BrandC‹StringC‹›, StrongPasswordBrand›* = t.brand(
+    t.string,
+    (s: string): s is t.Branded<string, StrongPasswordBrand> =>
+        passwordTester.test(s).strong,
+    'StrongPassword'
+)
+
+*Defined in [src/model/IdentityKeysGenerator.ts:47](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L47)*
+
+___
+
 ### `Const` SubjectiveIdentityIdCodec
 
 • **SubjectiveIdentityIdCodec**: *BrandC‹StringC‹›, SubjectiveIdentityIdBrand›* = t.brand(
@@ -358,7 +369,7 @@ ___
     'SubjectiveIdentityId'
 )
 
-*Defined in [src/model/Ids.ts:27](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/Ids.ts#L27)*
+*Defined in [src/model/Ids.ts:27](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L27)*
 
 IO-TS Codec for SubjectiveIdentityId
 
@@ -372,15 +383,15 @@ ___
     'Version'
 )
 
-Defined in src/model/base.ts:76
+Defined in src/model/base.ts:60
 
 ___
 
 ### `Const` aboutNameRegExp
 
-• **aboutNameRegExp**: *RegExp‹›* = /^[A-z0-9\._-]*[A-z0-9_-]$/
+• **aboutNameRegExp**: *RegExp‹›* = /^[A-z0-9._-]*[A-z0-9_-]$/
 
-*Defined in [src/model/About.ts:35](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/About.ts#L35)*
+*Defined in [src/model/About.ts:35](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L35)*
 
 Rule for names in about message schema as suggested in Scuttlebot documentation.
 
@@ -390,9 +401,9 @@ ___
 
 • **isCanonicalBase64**: *any*
 
-*Defined in [src/model/Ids.ts:3](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/Ids.ts#L3)*
+*Defined in [src/model/Ids.ts:3](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L3)*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:3](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/IdentityKeysGenerator.ts#L3)*
+*Defined in [src/model/IdentityKeysGenerator.ts:4](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L4)*
 
 ___
 
@@ -400,7 +411,7 @@ ___
 
 • **packageJson**: *object*
 
-Defined in src/model/base.ts:84
+Defined in src/model/base.ts:68
 
 #### Type declaration:
 
@@ -465,6 +476,8 @@ Defined in src/model/base.ts:84
 
   * **npm-dts**: *string* = "^1.2.1"
 
+  * **owasp-password-strength-test**: *string* = "^1.3.0"
+
   * **pull-stream**: *string* = "^3.6.14"
 
   * **secret-stack-decorators**: *string* = "^1.0.0"
@@ -480,6 +493,8 @@ Defined in src/model/base.ts:84
 * ### **devDependencies**: *object*
 
   * **@types/node**: *string* = "^13.7.4"
+
+  * **@types/owasp-password-strength-test**: *string* = "^1.3.0"
 
   * **@types/pull-stream**: *string* = "^3.6.0"
 
@@ -600,7 +615,7 @@ ___
 
 • **semverRegex**: *[semverRegex](README.md#semverregex)*
 
-Defined in src/model/base.ts:69
+Defined in src/model/base.ts:53
 
 ___
 
@@ -608,9 +623,9 @@ ___
 
 • **ssbKeys**: *any*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:2](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/IdentityKeysGenerator.ts#L2)*
+*Defined in [src/model/IdentityKeysGenerator.ts:3](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L3)*
 
-*Defined in [src/index.ts:20](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/index.ts#L20)*
+*Defined in [src/index.ts:26](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/index.ts#L26)*
 
 ___
 
@@ -618,7 +633,7 @@ ___
 
 • **ssbRef**: *any*
 
-*Defined in [src/model/Ids.ts:4](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/Ids.ts#L4)*
+*Defined in [src/model/Ids.ts:4](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L4)*
 
 ___
 
@@ -630,25 +645,45 @@ ___
     32
 )
 
-*Defined in [src/model/Ids.ts:13](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/Ids.ts#L13)*
+*Defined in [src/model/Ids.ts:13](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L13)*
 
 Regular expression matching Subjective Identity ID public key.  Similar to feed-id format but with 'I' as prefix.
 
 ## Functions
 
-###  PasswordBasedIdentityKeysGenerator
+###  PasswordBasedIdentityKeysProvider
 
-▸ **PasswordBasedIdentityKeysGenerator**(`password`: string): *(Anonymous function)*
+▸ **PasswordBasedIdentityKeysProvider**(`password`: [StrongPassword](README.md#strongpassword)): *[IdentityKeysProvider](README.md#identitykeysprovider)*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:36](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/model/IdentityKeysGenerator.ts#L36)*
+*Defined in [src/model/IdentityKeysGenerator.ts:64](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L64)*
+
+This implementation of IdentityKeysGenerator take a password as seed for the key pair generation
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`password` | string |
+`password` | [StrongPassword](README.md#strongpassword) |
 
-**Returns:** *(Anonymous function)*
+**Returns:** *[IdentityKeysProvider](README.md#identitykeysprovider)*
+
+___
+
+###  StoredIdentityKeysProvider
+
+▸ **StoredIdentityKeysProvider**(`keys`: [KeyPair](README.md#keypair)): *[IdentityKeysProvider](README.md#identitykeysprovider)*
+
+*Defined in [src/model/IdentityKeysGenerator.ts:80](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L80)*
+
+This implementation of IdentityKeysGenerator return the provided key pair (for instance stored locally)
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`keys` | [KeyPair](README.md#keypair) |
+
+**Returns:** *[IdentityKeysProvider](README.md#identitykeysprovider)*
 
 ___
 
@@ -656,7 +691,7 @@ ___
 
 ▸ **getPackageVersion**(): *[Version](README.md#version)*
 
-Defined in src/model/base.ts:89
+Defined in src/model/base.ts:73
 
 Returns the package version from the package.json file
 

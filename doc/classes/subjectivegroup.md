@@ -34,7 +34,7 @@ Scuttlebutt plugin that implement the concepts of subjective identity and groups
 
 \+ **new subjectiveGroup**(`ssb`: [SSBRequiredApi](../interfaces/ssbrequiredapi.md)): *[subjectiveGroup](subjectivegroup.md)*
 
-*Defined in [src/index.ts:33](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/index.ts#L33)*
+*Defined in [src/index.ts:39](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/index.ts#L39)*
 
 **Parameters:**
 
@@ -48,11 +48,11 @@ Name | Type |
 
 ###  about
 
-▸ **about**(`_id`: ids.FeedId | ids.SubjectiveIdentityId): *Promise‹[SubjectiveIdentity](subjectiveidentity.md)›*
+▸ **about**(`_id`: [FeedId](../README.md#feedid) | [SubjectiveIdentityId](../README.md#subjectiveidentityid)): *Promise‹[SubjectiveIdentity](subjectiveidentity.md)›*
 
 *Implementation of [SubjectiveGroupPlugin](../interfaces/subjectivegroupplugin.md)*
 
-*Defined in [src/index.ts:73](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/index.ts#L73)*
+*Defined in [src/index.ts:79](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/index.ts#L79)*
 
 This procedure returns the Subjective Identity corresponding to passed id.
 
@@ -60,7 +60,7 @@ This procedure returns the Subjective Identity corresponding to passed id.
 
 Name | Type |
 ------ | ------ |
-`_id` | ids.FeedId &#124; ids.SubjectiveIdentityId |
+`_id` | [FeedId](../README.md#feedid) &#124; [SubjectiveIdentityId](../README.md#subjectiveidentityid) |
 
 **Returns:** *Promise‹[SubjectiveIdentity](subjectiveidentity.md)›*
 
@@ -68,11 +68,11 @@ ___
 
 ###  createUserStream
 
-▸ **createUserStream**(`id`: ids.FeedId | ids.SubjectiveIdentityId): *Source‹Msg›*
+▸ **createUserStream**(`id`: [FeedId](../README.md#feedid) | [SubjectiveIdentityId](../README.md#subjectiveidentityid)): *Source‹Msg›*
 
 *Implementation of [SubjectiveGroupPlugin](../interfaces/subjectivegroupplugin.md)*
 
-*Defined in [src/index.ts:171](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/index.ts#L171)*
+*Defined in [src/index.ts:188](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/index.ts#L188)*
 
 Returns a joined stream of all feeds if SubjectiveIdentityId is passed else fallback to default
 createUserStream
@@ -81,7 +81,7 @@ createUserStream
 
 Name | Type |
 ------ | ------ |
-`id` | ids.FeedId &#124; ids.SubjectiveIdentityId |
+`id` | [FeedId](../README.md#feedid) &#124; [SubjectiveIdentityId](../README.md#subjectiveidentityid) |
 
 **Returns:** *Source‹Msg›*
 
@@ -89,11 +89,11 @@ ___
 
 ###  isBlocking
 
-▸ **isBlocking**(`_id`: ids.FeedId | ids.SubjectiveIdentityId): *Promise‹Record‹[FeedId](../README.md#feedid), boolean››*
+▸ **isBlocking**(`_id`: [FeedId](../README.md#feedid) | [SubjectiveIdentityId](../README.md#subjectiveidentityid)): *Promise‹Record‹[FeedId](../README.md#feedid), boolean››*
 
 *Implementation of [SubjectiveGroupPlugin](../interfaces/subjectivegroupplugin.md)*
 
-*Defined in [src/index.ts:122](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/index.ts#L122)*
+*Defined in [src/index.ts:128](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/index.ts#L128)*
 
 This procedure is the same as friends.isBlocking but with feed id or subjective identity as input and it
 returns the list of feeds known for the corresponding subjective identity with the status
@@ -102,7 +102,7 @@ returns the list of feeds known for the corresponding subjective identity with t
 
 Name | Type |
 ------ | ------ |
-`_id` | ids.FeedId &#124; ids.SubjectiveIdentityId |
+`_id` | [FeedId](../README.md#feedid) &#124; [SubjectiveIdentityId](../README.md#subjectiveidentityid) |
 
 **Returns:** *Promise‹Record‹[FeedId](../README.md#feedid), boolean››*
 
@@ -110,11 +110,11 @@ ___
 
 ###  isFollowing
 
-▸ **isFollowing**(`_id`: ids.FeedId | ids.SubjectiveIdentityId): *Promise‹Record‹[FeedId](../README.md#feedid), boolean››*
+▸ **isFollowing**(`_id`: [FeedId](../README.md#feedid) | [SubjectiveIdentityId](../README.md#subjectiveidentityid)): *Promise‹Record‹[FeedId](../README.md#feedid), boolean››*
 
 *Implementation of [SubjectiveGroupPlugin](../interfaces/subjectivegroupplugin.md)*
 
-*Defined in [src/index.ts:107](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/index.ts#L107)*
+*Defined in [src/index.ts:113](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/index.ts#L113)*
 
 This procedure is the same as friends.isFollowing but with feed id or subjective identity as input and it
 returns the list of feeds known for the corresponding subjective identity with the status
@@ -123,7 +123,7 @@ returns the list of feeds known for the corresponding subjective identity with t
 
 Name | Type |
 ------ | ------ |
-`_id` | ids.FeedId &#124; ids.SubjectiveIdentityId |
+`_id` | [FeedId](../README.md#feedid) &#124; [SubjectiveIdentityId](../README.md#subjectiveidentityid) |
 
 **Returns:** *Promise‹Record‹[FeedId](../README.md#feedid), boolean››*
 
@@ -131,11 +131,11 @@ ___
 
 ###  publishSubjectiveIdentity
 
-▸ **publishSubjectiveIdentity**(`identityKeyGenerator`: [IdentityKeysGenerator](../README.md#identitykeysgenerator), `_feedId`: [FeedId](../README.md#feedid), `name?`: about.Name, `image?`: about.ImageLink, `description?`: undefined | string): *Promise‹void›*
+▸ **publishSubjectiveIdentity**(`identityKey`: [KeyPair](../README.md#keypair) | [StrongPassword](../README.md#strongpassword) | [IdentityKeysProvider](../README.md#identitykeysprovider), `_feedId`: [FeedId](../README.md#feedid), `name?`: [Name](../README.md#name), `image?`: [ImageLink](../README.md#imagelink), `description?`: undefined | string): *Promise‹void›*
 
 *Implementation of [SubjectiveGroupPlugin](../interfaces/subjectivegroupplugin.md)*
 
-*Defined in [src/index.ts:137](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/index.ts#L137)*
+*Defined in [src/index.ts:143](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/index.ts#L143)*
 
 Publish an 'about' message with the Subjective Identity signature and public key as commitment of ownership.
 
@@ -143,10 +143,10 @@ Publish an 'about' message with the Subjective Identity signature and public key
 
 Name | Type |
 ------ | ------ |
-`identityKeyGenerator` | [IdentityKeysGenerator](../README.md#identitykeysgenerator) |
+`identityKey` | [KeyPair](../README.md#keypair) &#124; [StrongPassword](../README.md#strongpassword) &#124; [IdentityKeysProvider](../README.md#identitykeysprovider) |
 `_feedId` | [FeedId](../README.md#feedid) |
-`name?` | about.Name |
-`image?` | about.ImageLink |
+`name?` | [Name](../README.md#name) |
+`image?` | [ImageLink](../README.md#imagelink) |
 `description?` | undefined &#124; string |
 
 **Returns:** *Promise‹void›*
@@ -159,7 +159,7 @@ ___
 
 *Implementation of [SubjectiveGroupPlugin](../interfaces/subjectivegroupplugin.md)*
 
-*Defined in [src/index.ts:53](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/index.ts#L53)*
+*Defined in [src/index.ts:59](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/index.ts#L59)*
 
 This procedure returns all the subjective identities attached to the feeds owned by the current ssb server.
 (Note: currently all systems are using ssb-db which create 1 feed per server, so the returned Set will return 1

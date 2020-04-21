@@ -18,7 +18,7 @@
 
 • **publish**: *function*
 
-*Defined in [src/index.ts:23](https://github.com/gpicron/ssb-subjective-group/blob/c033130/src/index.ts#L23)*
+*Defined in [src/index.ts:29](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/index.ts#L29)*
 
 #### Type declaration:
 
