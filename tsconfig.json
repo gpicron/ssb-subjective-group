@@ -17,6 +17,7 @@
         "outDir": "./dist",
         "downlevelIteration": true,
         "experimentalDecorators": true,
+        "resolveJsonModule": true,
         "strict": true,
         "baseUrl": "./",
         "paths": {

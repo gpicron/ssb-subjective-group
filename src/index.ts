@@ -12,8 +12,9 @@ import ssbKeys = require('ssb-keys')
 import { Source } from 'pull-stream'
 import { Msg } from 'ssb-typescript/readme'
 import { SubjectiveGroupAboutMessage } from './model/About'
+import { getPackageVersion } from './model/Base'
 
-interface SSBApi {
+interface SSBRequiredApi {
     publish: (msq: SubjectiveGroupAboutMessage) => void
 }
 
@@ -21,12 +22,12 @@ interface SSBApi {
  * subjective-group plugin
  * Scuttlebutt plugin that implement the concepts of subjective identity and groups
  */
-@plugin('2.0.0')
+@plugin(getPackageVersion()) // TODO pull request to ssb-decorator to propose using the package version by default
 // eslint-disable-next-line @typescript-eslint/class-name-casing
 class subjectiveGroup {
-    private readonly ssb: SSBApi
+    private readonly ssb: SSBRequiredApi
 
-    constructor(ssb: SSBApi) {
+    constructor(ssb: SSBRequiredApi) {
         this.ssb = ssb
 
         /*

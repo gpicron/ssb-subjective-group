@@ -26,7 +26,7 @@ export type PositiveInteger = t.OutputOf<typeof PositiveIntegerCodec>
 
 // ------------------------------------------------------------------------
 
-/** @internal */
+/** @hidden */
 interface BufferBrand {
     readonly Buffer: unique symbol
 }
@@ -42,24 +42,9 @@ export const BufferCodec = t.brand(
 
 // ------------------------------------------------------------------------
 
-// based on the intersection of the grammar from RFC 2045 Section 5.1 and RFC 7231 Section 3.1.1.1
-const ows = '[ \t]*'
-const token = "[0-9A-Za-z!#$%&'*+.^_`|~-]+"
-const quotedString = '"(?:[^"\\\\]|\\.)*"'
-const type =
-    '(application|audio|font|example|image|message|model|multipart|text|video|x-(?:' +
-    token +
-    '))'
-const parameter =
-    ';' + ows + token + '=' + '(?:' + token + '|' + quotedString + ')'
-const mediaType = type + '/' + '(' + token + ')((?:' + ows + parameter + ')*)'
+import * as vmt from 'valid-mimetype'
 
-/**
- * Regular expression matching mime type strings as defined in RFC 2045 Section 5.1 and RFC 7231 Section 3.1.1.1
- */
-export const mimeTypeRegExp = new RegExp(mediaType)
-
-/** @internal */
+/** @hidden */
 export interface MimeTypeBrand {
     readonly MimeType: unique symbol
 }
@@ -70,7 +55,7 @@ export interface MimeTypeBrand {
 export const MimeTypeCodec = t.brand(
     t.string,
     (s: string): s is t.Branded<string, MimeTypeBrand> =>
-        mimeTypeRegExp.test(s),
+        vmt.isValidMimeType(s),
     'MimeType'
 )
 
@@ -78,3 +63,36 @@ export const MimeTypeCodec = t.brand(
  * MimeType string as defined by RFC 2045 Section 5.1 and RFC 7231 Section 3.1.1.1.
  */
 export type MimeType = t.OutputOf<typeof MimeTypeCodec>
+
+// ----------------------
+
+import semverRegex = require('semver-regex')
+
+/** @hidden */
+interface VersionBrand {
+    readonly Version: unique symbol
+}
+
+export const VersionCodec = t.brand(
+    t.string,
+    (s): s is t.Branded<string, VersionBrand> => semverRegex().test(s),
+    'Version'
+)
+
+export type Version = t.OutputOf<typeof VersionCodec>
+
+import packageJson = require('../../package.json')
+
+/**
+ * Returns the package version from the package.json file
+ */
+export function getPackageVersion(): Version {
+    const versionInput = packageJson.version
+    if (VersionCodec.is(versionInput)) {
+        return versionInput
+    } else {
+        throw new Error(
+            'Invalid version specified in package.json.  Do not follow semver syntax'
+        )
+    }
+}

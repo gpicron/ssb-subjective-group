@@ -1,17 +1,16 @@
 {
-    "mode": "modules",
+    "mode": "file",
     "out": "./doc",
     "exclude": [
         "./node_modules/**/*",
         "./dist/**/*",
-        "./test/**/*",
-        "./src/index.ts"
+        "./test/**/*"
     ],
     "excludePrivate": true,
     "excludeNotExported": true,
     "module": "commonjs",
     "target": "ES6",
     "readme": "none",
-    "name": "ssb-social-index",
+    "name": "ssb-subjective-group",
     "ignoreCompilerErrors": true
 }

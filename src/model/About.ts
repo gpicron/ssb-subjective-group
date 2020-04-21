@@ -34,7 +34,7 @@ type AboutMessageIdentitySignature = string
  */
 export const aboutNameRegExp = /^[A-z0-9\._-]*[A-z0-9_-]$/
 
-/** @internal */
+/** @hidden */
 interface NameBrand {
     readonly AboutName: unique symbol
 }

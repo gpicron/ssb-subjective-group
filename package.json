@@ -27,7 +27,7 @@
     "test": "nyc ava",
     "watch:test": "nodemon -e 'ts json' -x 'npm test || true'",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "typedoc": "typedoc  --options tdconfig.json"
+    "typedoc": "typedoc  --options typedoc.json"
   },
   "lint-staged": {
     "*.ts": [
@@ -107,7 +107,9 @@
     "npm-dts": "^1.2.1",
     "pull-stream": "^3.6.14",
     "secret-stack-decorators": "^1.0.0",
+    "semver-regex": "^3.1.1",
     "ssb-keys": "^7.2.2",
-    "ssb-typescript": "^2.0.0"
+    "ssb-typescript": "^2.0.0",
+    "valid-mimetype": "^1.0.0"
   }
 }

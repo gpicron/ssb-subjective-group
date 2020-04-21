@@ -16,7 +16,7 @@ export const subjectiveIdentityIdRegExp: RegExp = isCanonicalBase64(
     32
 )
 
-/** @internal */
+/** @hidden */
 interface SubjectiveIdentityIdBrand {
     readonly SubjectiveIdentityId: unique symbol
 }
@@ -40,7 +40,7 @@ export type SubjectiveIdentityId = t.OutputOf<typeof SubjectiveIdentityIdCodec>
 
 // TODO: make a pull request to incorporate io-ts codecs in 'ssb-typescript' instead of redefining it here
 
-/** @internal */
+/** @hidden */
 interface FeedIdBrand {
     readonly FeedId: unique symbol
 }
@@ -61,7 +61,7 @@ export type FeedId = t.OutputOf<typeof FeedIdCodec> & ssbTs.FeedId
 
 // ------------------------------------------------------------------------
 
-/** @internal */
+/** @hidden */
 export interface BlobIdBrand {
     readonly BlobId: unique symbol
 }

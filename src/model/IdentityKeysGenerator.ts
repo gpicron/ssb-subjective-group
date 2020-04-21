@@ -4,15 +4,14 @@ import isCanonicalBase64 = require('is-canonical-base64')
 
 // ---------------------------------------------------------------------
 
-/** @internal */
+/** @hidden */
 const keyRegExp: RegExp = isCanonicalBase64('', '.ed25519', 32)
 
-/** @internal */
+/** @hidden */
 interface Ed25519KeyInB64Brand {
     readonly Ed25519KeyInB64: unique symbol
 }
 
-/** @internal */
 const Ed25519KeyInB64Codec = t.brand(
     t.string,
     (s: string): s is t.Branded<string, Ed25519KeyInB64Brand> =>
@@ -22,13 +21,13 @@ const Ed25519KeyInB64Codec = t.brand(
 
 // ---------------------------------------------------------------------
 
-export const KeyPair = t.strict({
+export const KeyPairCodec = t.strict({
     curve: t.literal('ed25519'),
     pub: Ed25519KeyInB64Codec,
     private: Ed25519KeyInB64Codec
 })
 
-export type KeyPair = t.TypeOf<typeof KeyPair>
+export type KeyPair = t.TypeOf<typeof KeyPairCodec>
 
 export type IdentityKeysGenerator = () => KeyPair
 
