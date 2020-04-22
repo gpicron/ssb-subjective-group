@@ -7,7 +7,8 @@ import { FeedId, SubjectiveIdentityId } from './Ids'
 
 // TODO add codec
 
-export type AboutMessage = {
+export interface AboutFeedIdMessage {
+    type: 'about'
     about: FeedId
     name?: Name
     image?: ImageLink
@@ -17,8 +18,15 @@ export type AboutMessage = {
 /**
  * The base about message is signed with the subjectiveId key pair
  */
-export type SubjectiveGroupAboutMessage = AboutMessage & {
+export interface SubjectiveGroupAboutMessage extends AboutFeedIdMessage {
     subjectiveId: SubjectiveIdentityId
+}
+
+/**
+ * The base about message is signed with the subjectiveId key pair
+ */
+export interface SubjectiveGroupAboutMessageSigned
+    extends SubjectiveGroupAboutMessage {
     subjectiveIdSignature: AboutMessageIdentitySignature
 }
 

@@ -1,6 +1,8 @@
 import * as t from 'io-ts'
 import * as tp from 'io-ts-promise'
 import ssbKeys = require('ssb-keys')
+import chloride = require('chloride')
+
 import isCanonicalBase64 = require('is-canonical-base64')
 
 // ---------------------------------------------------------------------
@@ -24,7 +26,7 @@ const Ed25519KeyInB64Codec = t.brand(
 
 export const KeyPairCodec = t.strict({
     curve: t.literal('ed25519'),
-    pub: Ed25519KeyInB64Codec,
+    public: Ed25519KeyInB64Codec,
     private: Ed25519KeyInB64Codec
 })
 
@@ -67,6 +69,8 @@ export function PasswordBasedIdentityKeysProvider(
     return async () => {
         return tp
             .decode(StrongPasswordCodec, password)
+            .then(Buffer.from)
+            .then(chloride.crypto_hash)
             .then(p => ssbKeys.generate('ed25519', p) as KeyPair)
     }
 }

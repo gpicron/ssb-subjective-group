@@ -15,5 +15,7 @@ testProp.skip(
         // test arguments
         {
             // return assertion
+
+            return true
         }
 )

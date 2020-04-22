@@ -4,28 +4,37 @@ import {
     KeyPair,
     StrongPassword
 } from './model/IdentityKeysGenerator'
-import { FeedId } from './model/Ids'
-import { SubjectiveIdentityId } from './model/Ids'
-import { Name, ImageLink } from './model/About'
+import { FeedId, SubjectiveIdentityId } from './model/Ids'
+import { ImageLink, Name } from './model/About'
 import { Source } from 'pull-stream'
 import { Msg } from 'ssb-typescript/readme'
+import { Callback } from './model/Base'
+import FlumeViewReduce from './@types/flumeview-reduce'
+
+export interface SSBRequiredApi {
+    publish<T>(msq: T, cb: Callback<Msg<T>>): void
+    _flumeUse<T, U, R, S>(
+        viewName: string,
+        viewFactory: Function
+    ): FlumeViewReduce.View
+    id: FeedId
+}
 
 export interface SubjectiveGroupPlugin {
     /**
-     * This procedure returns all the subjective identities attached to the feeds owned by the current ssb server.
-     * (Note: currently all systems are using ssb-db which create 1 feed per server, so the returned Set will return 1
-     * element)
+     * This procedure returns the subjective identity attached to the feed owned by the current ssb server.
      *
      * There is only 1 subjective identity per feed (corresponding to the last published 'about' message on that feed).
      * If the last about message is not containing a subjective identity public key, the returned identity is not a subjective
-     * identity but the feed_id.
+     * identity but the 'dummy' SubjectiveIdentity referring the feed_id.
      *
      * The same subjective identity can be used on several feeds and on several devices (on laptop, on mobile, etc.)
      *
-     * The subjective identity unique key is the public key of an ed25519 key pair.
+     * The subjective identity unique key is the public key of an ed25519 key pair. It is prefixed by @... if it is a "dummy" one
+     * else it is prefixed by I...
      *
      */
-    whoami(): Promise<Set<SubjectiveIdentity>>
+    whoami(): Promise<SubjectiveIdentity>
 
     /**
      * This procedure returns the Subjective Identity corresponding to passed id.
@@ -66,11 +75,10 @@ export interface SubjectiveGroupPlugin {
 
     publishSubjectiveIdentity(
         identityKey: KeyPair | StrongPassword | IdentityKeysProvider,
-        _feedId: FeedId,
         name?: Name,
         image?: ImageLink,
         description?: string
-    ): Promise<void>
+    ): Promise<SubjectiveIdentity>
 
     /**
      * Returns a joined stream of all feeds if SubjectiveIdentityId is passed else fallback to default

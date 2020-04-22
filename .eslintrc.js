@@ -33,6 +33,7 @@ module.exports = {
                 ignoreProperties: true
             },
         ],
+        '@typescript-eslint/no-namespace': [ 'error', { allowDefinitionFiles: true, allowDeclarations: true  } ],
         '@typescript-eslint/no-unnecessary-type-assertion': ['warn'],
         '@typescript-eslint/no-unused-vars': ['error', {'argsIgnorePattern': '^_'}],
         '@typescript-eslint/no-useless-constructor': 'warn',

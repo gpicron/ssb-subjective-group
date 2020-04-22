@@ -1,5 +1,10 @@
-import { SubjectiveIdentityId, FeedId } from './Ids'
+import { FeedId, SubjectiveIdentityId } from './Ids'
 import * as about from './About'
+import {
+    AboutFeedIdMessage,
+    SubjectiveGroupAboutMessage,
+    SubjectiveGroupAboutMessageSigned
+} from './About'
 
 // ---------------------------------------------------------------------
 
@@ -9,25 +14,50 @@ export type FeedWithMetainfo = {
 }
 
 export class SubjectiveIdentity {
-    readonly id: SubjectiveIdentityId | FeedId
-    readonly feeds: ReadonlyArray<FeedId | FeedWithMetainfo>
+    id: SubjectiveIdentityId | FeedId
+    readonly feeds: Array<FeedId | FeedWithMetainfo>
 
-    readonly name?: about.Name
-    readonly image?: about.ImageLink
-    readonly description?: string
+    name?: about.Name
+    image?: about.ImageLink
+    description?: string
 
     constructor(
         id: SubjectiveIdentityId | FeedId,
-        feeds: ReadonlyArray<FeedId | FeedWithMetainfo>,
+        feeds: ArrayLike<FeedId | FeedWithMetainfo>,
         name?: about.Name,
         image?: about.ImageLink,
         description?: string
     ) {
         this.id = id
-        this.feeds = feeds
+        this.feeds = Array.from(feeds)
         this.name = name
         this.image = image
         this.description = description
+    }
+
+    public static from(
+        msg: AboutFeedIdMessage | SubjectiveGroupAboutMessage
+    ): SubjectiveIdentity {
+        const subjectiveId: SubjectiveIdentityId = (msg as SubjectiveGroupAboutMessage)
+            .subjectiveId
+
+        if (subjectiveId) {
+            return new SubjectiveIdentity(
+                subjectiveId,
+                [msg.about],
+                msg.name,
+                msg.image,
+                msg.description
+            )
+        } else {
+            return new SubjectiveIdentity(
+                msg.about,
+                [msg.about],
+                msg.name,
+                msg.image,
+                msg.description
+            )
+        }
     }
 
     /**
@@ -36,15 +66,23 @@ export class SubjectiveIdentity {
      */
 
     get allIds(): ReadonlyArray<SubjectiveIdentityId | FeedId> {
-        const allIds = [
-            this.id,
-            ...this.feeds.map(value =>
-                (value as FeedWithMetainfo).id
-                    ? (value as FeedWithMetainfo).id
-                    : (value as FeedId)
-            )
-        ]
+        const allIds = [this.id, ...this.feedIds]
 
-        return Array.from(new Set(allIds))
+        return allIds
+    }
+    get feedIds(): ReadonlyArray<FeedId> {
+        return this.feeds.map(value =>
+            (value as FeedWithMetainfo).id
+                ? (value as FeedWithMetainfo).id
+                : (value as FeedId)
+        )
+    }
+
+    public updateWith(content: SubjectiveGroupAboutMessageSigned): void {
+        if (!this.feedIds.includes(content.about))
+            this.feeds.push(content.about)
+        if (content.name) this.name = content.name
+        if (content.image) this.image = content.image
+        if (content.description) this.description = content.description
     }
 }
