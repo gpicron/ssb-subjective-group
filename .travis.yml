@@ -19,6 +19,7 @@ stages:
 install:
   - npm ci
 
+
 jobs:
   include:
     - stage: lint
@@ -26,9 +27,7 @@ jobs:
         - npm run lint
     - stage: test
       script:
-        - npm test
-      after_success:
-        - npm run coverage
+        - npm test && npm run coverage
     - stage: deploy
       before_script:
         - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
