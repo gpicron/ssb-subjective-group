@@ -41,7 +41,7 @@
     "url": "git+https://github.com/gpicron/ssb-subjective-group.git"
   },
   "author": "Geoffrey Picron <geoffrey.picron@arboratum.com> (https://github.com/gpicron)",
-  "license": "SEE LICENSE IN <LICENSE>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/gpicron/ssb-subjective-group/issues"
   },
@@ -57,6 +57,7 @@
     "ava": "^3.4.0",
     "ava-fast-check": "^1.1.2",
     "codecov": "^3.6.5",
+    "cz-conventional-changelog": "^3.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-ava": "^10.2.0",
     "eslint-plugin-security": "^1.4.0",
@@ -123,5 +124,10 @@
     "ssb-keys": "^7.2.2",
     "ssb-typescript": "^2.0.0",
     "valid-mimetype": "^1.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
