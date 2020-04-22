@@ -1,4 +1,4 @@
----
+  ---
 language: node_js
 
 node_js:
@@ -35,7 +35,7 @@ jobs:
       script:
         - skip
       deploy:
-        skip_cleanup: true
+        cleanup: false
         provider: script
         script: npm publish
         on:
