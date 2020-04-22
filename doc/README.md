@@ -4,6 +4,10 @@
 
 ## Index
 
+### Namespaces
+
+* [FlumeViewReduce](README.md#flumeviewreduce)
+
 ### Classes
 
 * [SubjectiveIdentity](classes/subjectiveidentity.md)
@@ -11,14 +15,18 @@
 
 ### Interfaces
 
+* [AboutFeedIdMessage](interfaces/aboutfeedidmessage.md)
+* [PReducedView](interfaces/preducedview.md)
 * [SSBRequiredApi](interfaces/ssbrequiredapi.md)
+* [SubjectiveGroupAboutMessage](interfaces/subjectivegroupaboutmessage.md)
+* [SubjectiveGroupAboutMessageSigned](interfaces/subjectivegroupaboutmessagesigned.md)
 * [SubjectiveGroupPlugin](interfaces/subjectivegroupplugin.md)
 
 ### Type aliases
 
-* [AboutMessage](README.md#aboutmessage)
 * [AboutMessageIdentitySignature](README.md#aboutmessageidentitysignature)
 * [BlobId](README.md#blobid)
+* [Callback](README.md#callback)
 * [FeedId](README.md#feedid)
 * [FeedWithMetainfo](README.md#feedwithmetainfo)
 * [IdentityKeysProvider](README.md#identitykeysprovider)
@@ -28,7 +36,6 @@
 * [Name](README.md#name)
 * [PositiveInteger](README.md#positiveinteger)
 * [StrongPassword](README.md#strongpassword)
-* [SubjectiveGroupAboutMessage](README.md#subjectivegroupaboutmessage)
 * [SubjectiveIdentityId](README.md#subjectiveidentityid)
 * [Version](README.md#version)
 
@@ -47,8 +54,10 @@
 * [SubjectiveIdentityIdCodec](README.md#const-subjectiveidentityidcodec)
 * [VersionCodec](README.md#const-versioncodec)
 * [aboutNameRegExp](README.md#const-aboutnameregexp)
+* [chloride](README.md#chloride)
 * [isCanonicalBase64](README.md#iscanonicalbase64)
 * [packageJson](README.md#packagejson)
+* [pify](README.md#pify)
 * [semverRegex](README.md#semverregex)
 * [ssbKeys](README.md#ssbkeys)
 * [ssbRef](README.md#ssbref)
@@ -56,35 +65,145 @@
 
 ### Functions
 
+* [FlumeViewReduce](README.md#export-assignment-flumeviewreduce)
 * [PasswordBasedIdentityKeysProvider](README.md#passwordbasedidentitykeysprovider)
 * [StoredIdentityKeysProvider](README.md#storedidentitykeysprovider)
 * [getPackageVersion](README.md#getpackageversion)
 
-## Type aliases
+## Namespaces
 
-###  AboutMessage
+###  FlumeViewReduce
 
-Ƭ **AboutMessage**: *object*
+• **FlumeViewReduce**: *typeof FlumeViewReduce*
 
-*Defined in [src/model/About.ts:10](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L10)*
+*Defined in [src/@types/flumeview-reduce.ts:12](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L12)*
+
+*Defined in [src/@types/flumeview-reduce.ts:14](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L14)*
+
+*Defined in [src/index.ts:33](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/index.ts#L33)*
+
+###  ReducedView
+
+• **ReducedView**:
+
+*Defined in [src/@types/flumeview-reduce.ts:28](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L28)*
+
+###  get
+
+▸ **get**(`callback`: [Callback](README.md#callback)‹R›): *void*
+
+*Defined in [src/@types/flumeview-reduce.ts:29](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L29)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`callback` | [Callback](README.md#callback)‹R› |
+
+**Returns:** *void*
+
+###  ready
+
+▸ **ready**(`callback`: [Callback](README.md#callback)‹void›): *void*
+
+*Inherited from [View](README.md#view).[ready](README.md#ready)*
+
+*Defined in [src/@types/flumeview-reduce.ts:25](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L25)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`callback` | [Callback](README.md#callback)‹void› |
+
+**Returns:** *void*
+
+###  stream
+
+▸ **stream**(): *Source‹R›*
+
+*Defined in [src/@types/flumeview-reduce.ts:30](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L30)*
+
+**Returns:** *Source‹R›*
+
+###  View
+
+• **View**:
+
+*Defined in [src/@types/flumeview-reduce.ts:24](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L24)*
+
+###  ready
+
+▸ **ready**(`callback`: [Callback](README.md#callback)‹void›): *void*
+
+*Defined in [src/@types/flumeview-reduce.ts:25](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L25)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`callback` | [Callback](README.md#callback)‹void› |
+
+**Returns:** *void*
+
+###  Codec
+
+Ƭ **Codec**: *object*
+
+*Defined in [src/@types/flumeview-reduce.ts:18](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L18)*
 
 #### Type declaration:
 
-* **about**: *[FeedId](README.md#feedid)*
+* **decode**(): *function*
 
-* **description**? : *undefined | string*
+  * (`output`: O): *I*
 
-* **image**? : *[ImageLink](README.md#imagelink)*
+* **encode**(): *function*
 
-* **name**? : *[Name](README.md#name)*
+  * (`input`: I): *O*
 
-___
+###  MapFunction
+
+Ƭ **MapFunction**: *function*
+
+*Defined in [src/@types/flumeview-reduce.ts:15](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L15)*
+
+#### Type declaration:
+
+▸ (`value`: T, `seq?`: undefined | number): *U | null*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`value` | T |
+`seq?` | undefined &#124; number |
+
+###  ReduceFunction
+
+Ƭ **ReduceFunction**: *function*
+
+*Defined in [src/@types/flumeview-reduce.ts:16](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L16)*
+
+#### Type declaration:
+
+▸ (`state`: R, `value`: U, `seq?`: undefined | number): *R*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`state` | R |
+`value` | U |
+`seq?` | undefined &#124; number |
+
+## Type aliases
 
 ###  AboutMessageIdentitySignature
 
 Ƭ **AboutMessageIdentitySignature**: *string*
 
-*Defined in [src/model/About.ts:26](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L26)*
+*Defined in [src/model/About.ts:34](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L34)*
 
 ___
 
@@ -92,9 +211,28 @@ ___
 
 Ƭ **BlobId**: *t.OutputOf‹typeof BlobIdCodec› & ssbTs.BlobId*
 
-*Defined in [src/model/Ids.ts:81](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L81)*
+*Defined in [src/model/Ids.ts:81](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/Ids.ts#L81)*
 
 Identifier of a blob ref.  This is a public key prefixed by the letter '&'.
+
+___
+
+###  Callback
+
+Ƭ **Callback**: *function*
+
+Defined in src/model/base.ts:7
+
+#### Type declaration:
+
+▸ (`err`: Error | null, `reply`: T): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`err` | Error &#124; null |
+`reply` | T |
 
 ___
 
@@ -102,7 +240,7 @@ ___
 
 Ƭ **FeedId**: *t.OutputOf‹typeof FeedIdCodec› & ssbTs.FeedId*
 
-*Defined in [src/model/Ids.ts:60](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L60)*
+*Defined in [src/model/Ids.ts:60](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/Ids.ts#L60)*
 
 Identifier of a feed.  This is a public key prefixed by the letter '@'.
 
@@ -112,7 +250,7 @@ ___
 
 Ƭ **FeedWithMetainfo**: *object*
 
-*Defined in [src/model/SubjectiveIdentity.ts:6](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/SubjectiveIdentity.ts#L6)*
+*Defined in [src/model/SubjectiveIdentity.ts:11](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/SubjectiveIdentity.ts#L11)*
 
 #### Type declaration:
 
@@ -126,7 +264,7 @@ ___
 
 Ƭ **IdentityKeysProvider**: *function*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:36](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L36)*
+*Defined in [src/model/IdentityKeysGenerator.ts:38](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/IdentityKeysGenerator.ts#L38)*
 
 Function signature of functions that provides the Subjective Identity KeyPair on demand.
 
@@ -140,7 +278,7 @@ ___
 
 Ƭ **ImageLink**: *t.OutputOf‹typeof ImageLinkCodec›*
 
-*Defined in [src/model/About.ts:81](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L81)*
+*Defined in [src/model/About.ts:89](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L89)*
 
 "image" reference attributes (see 'about' messages)
 
@@ -150,7 +288,7 @@ ___
 
 Ƭ **KeyPair**: *t.TypeOf‹typeof KeyPairCodec›*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:31](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L31)*
+*Defined in [src/model/IdentityKeysGenerator.ts:33](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/IdentityKeysGenerator.ts#L33)*
 
 ___
 
@@ -158,7 +296,7 @@ ___
 
 Ƭ **MimeType**: *t.OutputOf‹typeof MimeTypeCodec›*
 
-Defined in src/model/base.ts:49
+Defined in src/model/base.ts:51
 
 MimeType string as defined by RFC 2045 Section 5.1 and RFC 7231 Section 3.1.1.1.
 
@@ -168,7 +306,7 @@ ___
 
 Ƭ **Name**: *t.OutputOf‹typeof NameCodec›*
 
-*Defined in [src/model/About.ts:54](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L54)*
+*Defined in [src/model/About.ts:62](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L62)*
 
 Identifier of a feed.  This is a public key prefixed by the letter 'I'.
 
@@ -178,7 +316,7 @@ ___
 
 Ƭ **PositiveInteger**: *t.OutputOf‹typeof PositiveIntegerCodec›*
 
-Defined in src/model/base.ts:25
+Defined in src/model/base.ts:27
 
 PositiveInteger ( > 0 and < safe integer number in javascript).
 
@@ -188,17 +326,7 @@ ___
 
 Ƭ **StrongPassword**: *t.TypeOf‹typeof StrongPasswordCodec›*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:54](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L54)*
-
-___
-
-###  SubjectiveGroupAboutMessage
-
-Ƭ **SubjectiveGroupAboutMessage**: *[AboutMessage](README.md#aboutmessage) & object*
-
-*Defined in [src/model/About.ts:20](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L20)*
-
-The base about message is signed with the subjectiveId key pair
+*Defined in [src/model/IdentityKeysGenerator.ts:56](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/IdentityKeysGenerator.ts#L56)*
 
 ___
 
@@ -206,7 +334,7 @@ ___
 
 Ƭ **SubjectiveIdentityId**: *t.OutputOf‹typeof SubjectiveIdentityIdCodec›*
 
-*Defined in [src/model/Ids.ts:37](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L37)*
+*Defined in [src/model/Ids.ts:37](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/Ids.ts#L37)*
 
 Identifier of a subjective identity.  This is a public key prefixed by the letter 'I'.
 
@@ -216,7 +344,7 @@ ___
 
 Ƭ **Version**: *t.OutputOf‹typeof VersionCodec›*
 
-Defined in src/model/base.ts:66
+Defined in src/model/base.ts:68
 
 ## Variables
 
@@ -228,7 +356,7 @@ Defined in src/model/base.ts:66
     'BlobId'
 )
 
-*Defined in [src/model/Ids.ts:72](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L72)*
+*Defined in [src/model/Ids.ts:72](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/Ids.ts#L72)*
 
 IO-TS Codec for BlobId
 
@@ -243,7 +371,7 @@ ___
     'Ed25519KeyInB64'
 )
 
-*Defined in [src/model/IdentityKeysGenerator.ts:16](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L16)*
+*Defined in [src/model/IdentityKeysGenerator.ts:18](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/IdentityKeysGenerator.ts#L18)*
 
 ___
 
@@ -255,7 +383,7 @@ ___
     'FeedId'
 )
 
-*Defined in [src/model/Ids.ts:51](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L51)*
+*Defined in [src/model/Ids.ts:51](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/Ids.ts#L51)*
 
 IO-TS Codec for FeedId
 
@@ -275,7 +403,7 @@ ___
     })
 ])
 
-*Defined in [src/model/About.ts:61](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L61)*
+*Defined in [src/model/About.ts:69](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L69)*
 
 IO-TS Codec "image" reference with attributes (see 'about' messages)
 
@@ -285,7 +413,7 @@ ___
 
 • **ImageLinkCodec**: *UnionC‹[IntersectionC‹[TypeC‹object›, PartialC‹object›]›, BrandC‹StringC‹›, BlobIdBrand›]›* = t.union([FullImageLinkCodec, BlobIdCodec])
 
-*Defined in [src/model/About.ts:76](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L76)*
+*Defined in [src/model/About.ts:84](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L84)*
 
 IO-TS Codec "image" reference with attributes or just the blobId (see 'about' messages)
 
@@ -295,11 +423,11 @@ ___
 
 • **KeyPairCodec**: *ExactC‹TypeC‹object››* = t.strict({
     curve: t.literal('ed25519'),
-    pub: Ed25519KeyInB64Codec,
+    public: Ed25519KeyInB64Codec,
     private: Ed25519KeyInB64Codec
 })
 
-*Defined in [src/model/IdentityKeysGenerator.ts:25](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L25)*
+*Defined in [src/model/IdentityKeysGenerator.ts:27](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/IdentityKeysGenerator.ts#L27)*
 
 ___
 
@@ -312,7 +440,7 @@ ___
     'MimeType'
 )
 
-Defined in src/model/base.ts:39
+Defined in src/model/base.ts:41
 
 IO-TS Codec for MimeType as defined by RFC 2045 Section 5.1 and RFC 7231 Section 3.1.1.1
 
@@ -326,7 +454,7 @@ ___
     'AboutName'
 )
 
-*Defined in [src/model/About.ts:45](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L45)*
+*Defined in [src/model/About.ts:53](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L53)*
 
 IO-TS Codec for FeedId
 
@@ -341,7 +469,7 @@ ___
     'PositiveInteger'
 )
 
-Defined in src/model/base.ts:15
+Defined in src/model/base.ts:17
 
 IO-TS Codec for PositiveInteger ( > 0 and < safe integer number in javascript).
 
@@ -356,7 +484,7 @@ ___
     'StrongPassword'
 )
 
-*Defined in [src/model/IdentityKeysGenerator.ts:47](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L47)*
+*Defined in [src/model/IdentityKeysGenerator.ts:49](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/IdentityKeysGenerator.ts#L49)*
 
 ___
 
@@ -369,7 +497,7 @@ ___
     'SubjectiveIdentityId'
 )
 
-*Defined in [src/model/Ids.ts:27](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L27)*
+*Defined in [src/model/Ids.ts:27](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/Ids.ts#L27)*
 
 IO-TS Codec for SubjectiveIdentityId
 
@@ -383,7 +511,7 @@ ___
     'Version'
 )
 
-Defined in src/model/base.ts:60
+Defined in src/model/base.ts:62
 
 ___
 
@@ -391,9 +519,17 @@ ___
 
 • **aboutNameRegExp**: *RegExp‹›* = /^[A-z0-9._-]*[A-z0-9_-]$/
 
-*Defined in [src/model/About.ts:35](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/About.ts#L35)*
+*Defined in [src/model/About.ts:43](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L43)*
 
 Rule for names in about message schema as suggested in Scuttlebot documentation.
+
+___
+
+###  chloride
+
+• **chloride**: *any*
+
+*Defined in [src/model/IdentityKeysGenerator.ts:4](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/IdentityKeysGenerator.ts#L4)*
 
 ___
 
@@ -401,9 +537,9 @@ ___
 
 • **isCanonicalBase64**: *any*
 
-*Defined in [src/model/Ids.ts:3](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L3)*
+*Defined in [src/model/Ids.ts:3](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/Ids.ts#L3)*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:4](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L4)*
+*Defined in [src/model/IdentityKeysGenerator.ts:6](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/IdentityKeysGenerator.ts#L6)*
 
 ___
 
@@ -411,7 +547,7 @@ ___
 
 • **packageJson**: *object*
 
-Defined in src/model/base.ts:68
+Defined in src/model/base.ts:70
 
 #### Type declaration:
 
@@ -466,6 +602,8 @@ Defined in src/model/base.ts:68
 
   * **flumeview-query**: *string* = "^7.2.1"
 
+  * **flumeview-reduce**: *string* = "^1.3.16"
+
   * **fp-ts**: *string* = "^2.5.3"
 
   * **io-ts**: *string* = "^2.2.0"
@@ -478,9 +616,11 @@ Defined in src/model/base.ts:68
 
   * **owasp-password-strength-test**: *string* = "^1.3.0"
 
+  * **pify**: *string* = "^5.0.0"
+
   * **pull-stream**: *string* = "^3.6.14"
 
-  * **secret-stack-decorators**: *string* = "^1.0.0"
+  * **secret-stack-decorators**: *string* = "^1.1.0"
 
   * **semver-regex**: *string* = "^3.1.1"
 
@@ -496,7 +636,11 @@ Defined in src/model/base.ts:68
 
   * **@types/owasp-password-strength-test**: *string* = "^1.3.0"
 
+  * **@types/pify**: *string* = "^3.0.2"
+
   * **@types/pull-stream**: *string* = "^3.6.0"
+
+  * **@types/rimraf**: *string* = "^3.0.0"
 
   * **@typescript-eslint/eslint-plugin**: *string* = "^2.20.0"
 
@@ -516,6 +660,8 @@ Defined in src/model/base.ts:68
 
   * **fast-check**: *string* = "^1.22.2"
 
+  * **get-port**: *string* = "^5.1.1"
+
   * **lint-staged**: *string* = "^10.0.7"
 
   * **nyc**: *string* = "^15.0.0"
@@ -526,9 +672,17 @@ Defined in src/model/base.ts:68
 
   * **rimraf**: *string* = "^3.0.2"
 
+  * **secret-stack**: *string* = "^6.3.1"
+
+  * **ssb-backlinks**: *string* = "^1.0.0"
+
+  * **ssb-config**: *string* = "^3.4.4"
+
+  * **ssb-db**: *string* = "^19.4.0"
+
   * **ts-node**: *string* = "^8.6.2"
 
-  * **typedoc**: *string* = "^0.16.11"
+  * **typedoc**: *string* = "^0.17.3"
 
   * **typedoc-plugin-markdown**: *string* = "^2.2.16"
 
@@ -611,11 +765,19 @@ Defined in src/model/base.ts:68
 
 ___
 
+###  pify
+
+• **pify**: *[pify](README.md#pify)*
+
+*Defined in [src/index.ts:31](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/index.ts#L31)*
+
+___
+
 ###  semverRegex
 
 • **semverRegex**: *[semverRegex](README.md#semverregex)*
 
-Defined in src/model/base.ts:53
+Defined in src/model/base.ts:55
 
 ___
 
@@ -623,9 +785,9 @@ ___
 
 • **ssbKeys**: *any*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:3](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L3)*
+*Defined in [src/model/IdentityKeysGenerator.ts:3](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/IdentityKeysGenerator.ts#L3)*
 
-*Defined in [src/index.ts:26](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/index.ts#L26)*
+*Defined in [src/index.ts:30](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/index.ts#L30)*
 
 ___
 
@@ -633,7 +795,7 @@ ___
 
 • **ssbRef**: *any*
 
-*Defined in [src/model/Ids.ts:4](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L4)*
+*Defined in [src/model/Ids.ts:4](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/Ids.ts#L4)*
 
 ___
 
@@ -645,17 +807,47 @@ ___
     32
 )
 
-*Defined in [src/model/Ids.ts:13](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/Ids.ts#L13)*
+*Defined in [src/model/Ids.ts:13](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/Ids.ts#L13)*
 
 Regular expression matching Subjective Identity ID public key.  Similar to feed-id format but with 'I' as prefix.
 
 ## Functions
 
+### `Export assignment` FlumeViewReduce
+
+▸ **FlumeViewReduce**<**T**, **U**, **R**, **S**>(`version`: number, `reduce`: [ReduceFunction](README.md#reducefunction)‹U, R›, `map?`: [MapFunction](README.md#mapfunction)‹T, U›, `codec?`: [Codec](README.md#codec)‹R, S›, `initialState?`: R): *Function*
+
+*Defined in [src/@types/flumeview-reduce.ts:4](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/@types/flumeview-reduce.ts#L4)*
+
+**Type parameters:**
+
+▪ **T**
+
+▪ **U**
+
+▪ **R**
+
+▪ **S**
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`version` | number |
+`reduce` | [ReduceFunction](README.md#reducefunction)‹U, R› |
+`map?` | [MapFunction](README.md#mapfunction)‹T, U› |
+`codec?` | [Codec](README.md#codec)‹R, S› |
+`initialState?` | R |
+
+**Returns:** *Function*
+
+___
+
 ###  PasswordBasedIdentityKeysProvider
 
 ▸ **PasswordBasedIdentityKeysProvider**(`password`: [StrongPassword](README.md#strongpassword)): *[IdentityKeysProvider](README.md#identitykeysprovider)*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:64](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L64)*
+*Defined in [src/model/IdentityKeysGenerator.ts:66](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/IdentityKeysGenerator.ts#L66)*
 
 This implementation of IdentityKeysGenerator take a password as seed for the key pair generation
 
@@ -673,7 +865,7 @@ ___
 
 ▸ **StoredIdentityKeysProvider**(`keys`: [KeyPair](README.md#keypair)): *[IdentityKeysProvider](README.md#identitykeysprovider)*
 
-*Defined in [src/model/IdentityKeysGenerator.ts:80](https://github.com/gpicron/ssb-subjective-group/blob/d1d0c99/src/model/IdentityKeysGenerator.ts#L80)*
+*Defined in [src/model/IdentityKeysGenerator.ts:84](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/IdentityKeysGenerator.ts#L84)*
 
 This implementation of IdentityKeysGenerator return the provided key pair (for instance stored locally)
 
@@ -691,7 +883,7 @@ ___
 
 ▸ **getPackageVersion**(): *[Version](README.md#version)*
 
-Defined in src/model/base.ts:73
+Defined in src/model/base.ts:75
 
 Returns the package version from the package.json file
 
