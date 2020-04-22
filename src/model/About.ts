@@ -1,7 +1,6 @@
 import * as t from 'io-ts'
-import { PositiveIntegerCodec, MimeTypeCodec } from './base'
-import { BlobIdCodec } from './ids'
-import { FeedId, SubjectiveIdentityId } from './Ids'
+import { PositiveIntegerCodec, MimeTypeCodec } from './Base'
+import { BlobIdCodec, FeedId, SubjectiveIdentityId } from './Ids'
 
 // ----------------------------------------------
 
