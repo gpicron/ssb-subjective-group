@@ -24,7 +24,7 @@
 
 • **about**: *[FeedId](../README.md#feedid)*
 
-*Defined in [src/model/About.ts:12](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L12)*
+*Defined in [ssb-subjective-group/src/model/About.ts:11](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L11)*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 • **description**? : *undefined | string*
 
-*Defined in [src/model/About.ts:15](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L15)*
+*Defined in [ssb-subjective-group/src/model/About.ts:14](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L14)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 • **image**? : *[ImageLink](../README.md#imagelink)*
 
-*Defined in [src/model/About.ts:14](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L14)*
+*Defined in [ssb-subjective-group/src/model/About.ts:13](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L13)*
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 • **name**? : *[Name](../README.md#name)*
 
-*Defined in [src/model/About.ts:13](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L13)*
+*Defined in [ssb-subjective-group/src/model/About.ts:12](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L12)*
 
 ___
 
@@ -56,4 +56,4 @@ ___
 
 • **type**: *"about"*
 
-*Defined in [src/model/About.ts:11](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L11)*
+*Defined in [ssb-subjective-group/src/model/About.ts:10](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L10)*

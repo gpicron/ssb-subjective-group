@@ -37,6 +37,15 @@ interface PReducedView<R> {
     stream(): Source<R>
 }
 
+interface SSBPApi {
+    publish<T>(msq: T): Promise<Msg<T>>
+    _flumeUse<T, U, R, S>(
+        viewName: string,
+        viewFactory: Function
+    ): FlumeViewReduce.View
+    id: FeedId
+}
+
 /**
  * subjective-group plugin
  * Scuttlebutt plugin that implement the concepts of subjective identity and groups
@@ -44,11 +53,13 @@ interface PReducedView<R> {
 @plugin(getPackageVersion())
 // eslint-disable-next-line @typescript-eslint/class-name-casing
 class subjectiveGroup implements SubjectiveGroupPlugin {
-    readonly ssb: SSBRequiredApi
+    readonly ssb: SSBPApi
     readonly indexView: PReducedView<Array<SubjectiveIdentity>>
 
     constructor(ssb: SSBRequiredApi) {
-        this.ssb = ssb
+        this.ssb = pify(ssb, {
+            include: ['publish']
+        })
 
         const reduce: FlumeViewReduce.ReduceFunction<
             Msg<AboutFeedIdMessage | SubjectiveGroupAboutMessageSigned>,
@@ -270,9 +281,9 @@ class subjectiveGroup implements SubjectiveGroupPlugin {
             subjectiveIdSignature: signedBaseAboutMsg.signature
         }
 
-        const publishedMessage: Msg<SubjectiveGroupAboutMessageSigned> = await pify(
-            this.ssb.publish
-        )(aboutMsg)
+        const publishedMessage: Msg<SubjectiveGroupAboutMessageSigned> = await this.ssb.publish(
+            aboutMsg
+        )
 
         return SubjectiveIdentity.from(publishedMessage.value.content)
     }

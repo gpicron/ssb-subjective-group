@@ -27,7 +27,7 @@
 
 ▸ **about**(`id`: [FeedId](../README.md#feedid) | [SubjectiveIdentityId](../README.md#subjectiveidentityid)): *Promise‹[SubjectiveIdentity](../classes/subjectiveidentity.md)›*
 
-*Defined in [src/ssb-subjective-group-types.ts:44](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/ssb-subjective-group-types.ts#L44)*
+*Defined in [ssb-subjective-group/src/ssb-subjective-group-types.ts:44](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/ssb-subjective-group-types.ts#L44)*
 
 This procedure returns the Subjective Identity corresponding to passed id.
 
@@ -43,9 +43,9 @@ ___
 
 ###  createUserStream
 
-▸ **createUserStream**(`id`: [FeedId](../README.md#feedid) | [SubjectiveIdentityId](../README.md#subjectiveidentityid)): *Source‹Msg›*
+▸ **createUserStream**(`id`: [FeedId](../README.md#feedid) | [SubjectiveIdentityId](../README.md#subjectiveidentityid)): *Source‹[Msg](../README.md#msg)›*
 
-*Defined in [src/ssb-subjective-group-types.ts:89](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/ssb-subjective-group-types.ts#L89)*
+*Defined in [ssb-subjective-group/src/ssb-subjective-group-types.ts:89](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/ssb-subjective-group-types.ts#L89)*
 
 Returns a joined stream of all feeds if SubjectiveIdentityId is passed else fallback to default
 createUserStream
@@ -56,7 +56,7 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `id` | [FeedId](../README.md#feedid) &#124; [SubjectiveIdentityId](../README.md#subjectiveidentityid) |   |
 
-**Returns:** *Source‹Msg›*
+**Returns:** *Source‹[Msg](../README.md#msg)›*
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 ▸ **isBlocking**(`id`: [FeedId](../README.md#feedid) | [SubjectiveIdentityId](../README.md#subjectiveidentityid)): *Promise‹Record‹[FeedId](../README.md#feedid), boolean››*
 
-*Defined in [src/ssb-subjective-group-types.ts:62](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/ssb-subjective-group-types.ts#L62)*
+*Defined in [ssb-subjective-group/src/ssb-subjective-group-types.ts:62](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/ssb-subjective-group-types.ts#L62)*
 
 This procedure is the same as friends.isBlocking but with feed id or subjective identity as input and it
 returns the list of feeds known for the corresponding subjective identity with the status
@@ -83,7 +83,7 @@ ___
 
 ▸ **isFollowing**(`id`: [FeedId](../README.md#feedid) | [SubjectiveIdentityId](../README.md#subjectiveidentityid)): *Promise‹Record‹[FeedId](../README.md#feedid), boolean››*
 
-*Defined in [src/ssb-subjective-group-types.ts:52](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/ssb-subjective-group-types.ts#L52)*
+*Defined in [ssb-subjective-group/src/ssb-subjective-group-types.ts:52](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/ssb-subjective-group-types.ts#L52)*
 
 This procedure is the same as friends.isFollowing but with feed id or subjective identity as input and it
 returns the list of feeds known for the corresponding subjective identity with the status
@@ -102,7 +102,7 @@ ___
 
 ▸ **publishSubjectiveIdentity**(`identityKey`: [KeyPair](../README.md#keypair) | [StrongPassword](../README.md#strongpassword) | [IdentityKeysProvider](../README.md#identitykeysprovider), `name?`: [Name](../README.md#name), `image?`: [ImageLink](../README.md#imagelink), `description?`: undefined | string): *Promise‹[SubjectiveIdentity](../classes/subjectiveidentity.md)›*
 
-*Defined in [src/ssb-subjective-group-types.ts:76](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/ssb-subjective-group-types.ts#L76)*
+*Defined in [ssb-subjective-group/src/ssb-subjective-group-types.ts:76](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/ssb-subjective-group-types.ts#L76)*
 
 Publish an 'about' message with the Subjective Identity signature and public key as commitment of ownership.
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **whoami**(): *Promise‹[SubjectiveIdentity](../classes/subjectiveidentity.md)›*
 
-*Defined in [src/ssb-subjective-group-types.ts:37](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/ssb-subjective-group-types.ts#L37)*
+*Defined in [ssb-subjective-group/src/ssb-subjective-group-types.ts:37](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/ssb-subjective-group-types.ts#L37)*
 
 This procedure returns the subjective identity attached to the feed owned by the current ssb server.
 

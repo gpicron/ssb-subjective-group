@@ -23,7 +23,7 @@
 
 • **id**: *[FeedId](../README.md#feedid)*
 
-*Defined in [src/ssb-subjective-group-types.ts:20](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/ssb-subjective-group-types.ts#L20)*
+*Defined in [ssb-subjective-group/src/ssb-subjective-group-types.ts:20](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/ssb-subjective-group-types.ts#L20)*
 
 ## Methods
 
@@ -31,7 +31,7 @@
 
 ▸ **_flumeUse**<**T**, **U**, **R**, **S**>(`viewName`: string, `viewFactory`: Function): *[View](../README.md#view)*
 
-*Defined in [src/ssb-subjective-group-types.ts:16](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/ssb-subjective-group-types.ts#L16)*
+*Defined in [ssb-subjective-group/src/ssb-subjective-group-types.ts:16](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/ssb-subjective-group-types.ts#L16)*
 
 **Type parameters:**
 
@@ -56,9 +56,9 @@ ___
 
 ###  publish
 
-▸ **publish**<**T**>(`msq`: T, `cb`: [Callback](../README.md#callback)‹Msg‹T››): *void*
+▸ **publish**<**T**>(`msq`: T, `cb`: [Callback](../README.md#callback)‹[Msg](../README.md#msg)‹T››): *void*
 
-*Defined in [src/ssb-subjective-group-types.ts:15](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/ssb-subjective-group-types.ts#L15)*
+*Defined in [ssb-subjective-group/src/ssb-subjective-group-types.ts:15](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/ssb-subjective-group-types.ts#L15)*
 
 **Type parameters:**
 
@@ -69,6 +69,6 @@ ___
 Name | Type |
 ------ | ------ |
 `msq` | T |
-`cb` | [Callback](../README.md#callback)‹Msg‹T›› |
+`cb` | [Callback](../README.md#callback)‹[Msg](../README.md#msg)‹T›› |
 
 **Returns:** *void*

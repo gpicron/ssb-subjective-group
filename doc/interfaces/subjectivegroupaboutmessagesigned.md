@@ -30,7 +30,7 @@ The base about message is signed with the subjectiveId key pair
 
 *Inherited from [AboutFeedIdMessage](aboutfeedidmessage.md).[about](aboutfeedidmessage.md#about)*
 
-*Defined in [src/model/About.ts:12](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L12)*
+*Defined in [ssb-subjective-group/src/model/About.ts:11](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L11)*
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 *Inherited from [AboutFeedIdMessage](aboutfeedidmessage.md).[description](aboutfeedidmessage.md#optional-description)*
 
-*Defined in [src/model/About.ts:15](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L15)*
+*Defined in [ssb-subjective-group/src/model/About.ts:14](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L14)*
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 *Inherited from [AboutFeedIdMessage](aboutfeedidmessage.md).[image](aboutfeedidmessage.md#optional-image)*
 
-*Defined in [src/model/About.ts:14](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L14)*
+*Defined in [ssb-subjective-group/src/model/About.ts:13](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L13)*
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 *Inherited from [AboutFeedIdMessage](aboutfeedidmessage.md).[name](aboutfeedidmessage.md#optional-name)*
 
-*Defined in [src/model/About.ts:13](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L13)*
+*Defined in [ssb-subjective-group/src/model/About.ts:12](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L12)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 *Inherited from [SubjectiveGroupAboutMessage](subjectivegroupaboutmessage.md).[subjectiveId](subjectivegroupaboutmessage.md#subjectiveid)*
 
-*Defined in [src/model/About.ts:22](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L22)*
+*Defined in [ssb-subjective-group/src/model/About.ts:21](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L21)*
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 • **subjectiveIdSignature**: *[AboutMessageIdentitySignature](../README.md#aboutmessageidentitysignature)*
 
-*Defined in [src/model/About.ts:30](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L30)*
+*Defined in [ssb-subjective-group/src/model/About.ts:29](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L29)*
 
 ___
 
@@ -88,4 +88,4 @@ ___
 
 *Inherited from [AboutFeedIdMessage](aboutfeedidmessage.md).[type](aboutfeedidmessage.md#type)*
 
-*Defined in [src/model/About.ts:11](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/About.ts#L11)*
+*Defined in [ssb-subjective-group/src/model/About.ts:10](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/About.ts#L10)*

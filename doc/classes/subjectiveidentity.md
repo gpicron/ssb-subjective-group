@@ -36,7 +36,7 @@
 
 \+ **new SubjectiveIdentity**(`id`: [SubjectiveIdentityId](../README.md#subjectiveidentityid) | [FeedId](../README.md#feedid), `feeds`: ArrayLike‹[FeedId](../README.md#feedid) | [FeedWithMetainfo](../README.md#feedwithmetainfo)›, `name?`: about.Name, `image?`: about.ImageLink, `description?`: undefined | string): *[SubjectiveIdentity](subjectiveidentity.md)*
 
-*Defined in [src/model/SubjectiveIdentity.ts:22](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/SubjectiveIdentity.ts#L22)*
+*Defined in [ssb-subjective-group/src/model/SubjectiveIdentity.ts:22](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/SubjectiveIdentity.ts#L22)*
 
 **Parameters:**
 
@@ -56,7 +56,7 @@ Name | Type |
 
 • **description**? : *undefined | string*
 
-*Defined in [src/model/SubjectiveIdentity.ts:22](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/SubjectiveIdentity.ts#L22)*
+*Defined in [ssb-subjective-group/src/model/SubjectiveIdentity.ts:22](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/SubjectiveIdentity.ts#L22)*
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 • **feeds**: *Array‹[FeedId](../README.md#feedid) | [FeedWithMetainfo](../README.md#feedwithmetainfo)›*
 
-*Defined in [src/model/SubjectiveIdentity.ts:18](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/SubjectiveIdentity.ts#L18)*
+*Defined in [ssb-subjective-group/src/model/SubjectiveIdentity.ts:18](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/SubjectiveIdentity.ts#L18)*
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 • **id**: *[SubjectiveIdentityId](../README.md#subjectiveidentityid) | [FeedId](../README.md#feedid)*
 
-*Defined in [src/model/SubjectiveIdentity.ts:17](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/SubjectiveIdentity.ts#L17)*
+*Defined in [ssb-subjective-group/src/model/SubjectiveIdentity.ts:17](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/SubjectiveIdentity.ts#L17)*
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 • **image**? : *about.ImageLink*
 
-*Defined in [src/model/SubjectiveIdentity.ts:21](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/SubjectiveIdentity.ts#L21)*
+*Defined in [ssb-subjective-group/src/model/SubjectiveIdentity.ts:21](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/SubjectiveIdentity.ts#L21)*
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 • **name**? : *about.Name*
 
-*Defined in [src/model/SubjectiveIdentity.ts:20](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/SubjectiveIdentity.ts#L20)*
+*Defined in [ssb-subjective-group/src/model/SubjectiveIdentity.ts:20](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/SubjectiveIdentity.ts#L20)*
 
 ## Accessors
 
@@ -96,7 +96,7 @@ ___
 
 • **get allIds**(): *ReadonlyArray‹[SubjectiveIdentityId](../README.md#subjectiveidentityid) | [FeedId](../README.md#feedid)›*
 
-*Defined in [src/model/SubjectiveIdentity.ts:68](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/SubjectiveIdentity.ts#L68)*
+*Defined in [ssb-subjective-group/src/model/SubjectiveIdentity.ts:68](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/SubjectiveIdentity.ts#L68)*
 
 This attribute contains the list of all feed ids + the subjective id.  This is useful to perform 'in' query criteria on
 ssb-backlinks and ssb-query.
@@ -109,7 +109,7 @@ ___
 
 • **get feedIds**(): *ReadonlyArray‹[FeedId](../README.md#feedid)›*
 
-*Defined in [src/model/SubjectiveIdentity.ts:73](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/SubjectiveIdentity.ts#L73)*
+*Defined in [ssb-subjective-group/src/model/SubjectiveIdentity.ts:73](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/SubjectiveIdentity.ts#L73)*
 
 **Returns:** *ReadonlyArray‹[FeedId](../README.md#feedid)›*
 
@@ -119,7 +119,7 @@ ___
 
 ▸ **updateWith**(`content`: [SubjectiveGroupAboutMessageSigned](../interfaces/subjectivegroupaboutmessagesigned.md)): *void*
 
-*Defined in [src/model/SubjectiveIdentity.ts:81](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/SubjectiveIdentity.ts#L81)*
+*Defined in [ssb-subjective-group/src/model/SubjectiveIdentity.ts:81](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/SubjectiveIdentity.ts#L81)*
 
 **Parameters:**
 
@@ -135,7 +135,7 @@ ___
 
 ▸ **from**(`msg`: [AboutFeedIdMessage](../interfaces/aboutfeedidmessage.md) | [SubjectiveGroupAboutMessage](../interfaces/subjectivegroupaboutmessage.md)): *[SubjectiveIdentity](subjectiveidentity.md)*
 
-*Defined in [src/model/SubjectiveIdentity.ts:38](https://github.com/gpicron/ssb-subjective-group/blob/3740865/src/model/SubjectiveIdentity.ts#L38)*
+*Defined in [ssb-subjective-group/src/model/SubjectiveIdentity.ts:38](https://github.com/gpicron/ssb-subjective-group/blob/8054028/src/model/SubjectiveIdentity.ts#L38)*
 
 **Parameters:**
 

@@ -4,7 +4,7 @@ import * as t from 'io-ts'
 
 // ------------------------------------------------------------------------
 
-export type Callback<T> = (err: Error | null, reply: T) => void
+export type Callback<T> = (err: Error | undefined, reply: T | undefined) => void
 
 /** @hidden */
 export interface PositiveIntegerBrand {
