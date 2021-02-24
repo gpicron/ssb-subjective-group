@@ -119,7 +119,7 @@
     "io-ts": "^2.2.0",
     "io-ts-promise": "latest",
     "is-canonical-base64": "^1.1.1",
-    "npm-dts": "^1.2.1",
+    "npm-dts": "^1.3.7",
     "owasp-password-strength-test": "^1.3.0",
     "pify": "^5.0.0",
     "pull-stream": "^3.6.14",
