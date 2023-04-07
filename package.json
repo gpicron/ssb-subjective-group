@@ -27,7 +27,9 @@
     "test": "nyc ava",
     "watch:test": "nodemon -e 'ts json' -x 'npm test || true'",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "typedoc": "typedoc  --options typedoc.json"
+    "typedoc": "typedoc  --options typedoc.json",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "lint-staged": {
     "*.ts": [
@@ -127,11 +129,13 @@
     "semver-regex": "^3.1.1",
     "ssb-keys": "^7.2.2",
     "ssb-typescript": "^2.0.0",
-    "valid-mimetype": "^1.0.0"
+    "valid-mimetype": "^1.0.0",
+    "@snyk/protect": "latest"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "snyk": true
 }
