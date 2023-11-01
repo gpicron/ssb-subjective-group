@@ -54,7 +54,7 @@
     "@types/pify": "^3.0.2",
     "@types/pull-stream": "^3.6.0",
     "@types/rimraf": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.20.0",
     "ava": "^4.0.0",
     "ava-fast-check": "^1.1.2",
